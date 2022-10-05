@@ -495,13 +495,131 @@ var worldCup = [
 ];
 
 var main = document.getElementById("main");
-for (var key in worldCup[0].groups) {
-  console.log(worldCup[0].groups[key]);
+for (var key of worldCup) {
+// console.log(key)
+  for(var key1 in key){
+    if(typeof key[key1] === "object"){
+      // console.log(key[key1])
+      for(var key2 of key[key1]){
+        // console.log(key2)
+        var groupDiv = document.createElement("div");
+        main.appendChild(groupDiv)
+        groupDiv.innerText = key2.name
+        groupDiv.className = "group-div"
+        groupDiv.setAttribute("onclick","handleShowModal(event)")
+      }
+    }
+  }  
+}
 
-  var groupsElm = document.createElement("div");
-  main.appendChild(groupsElm);
-  groupsElm.innerText = worldCup[0].groups[key].name;
-  groupsElm.className = "group-main";
-  var standingObj = worldCup[0].groups[key].standings;
-  console.log(standingObj);
+
+
+var cont;
+function handleShowModal(e){
+  var modalMain = document.getElementsByClassName("modal-main")[0];
+  // console.log(modalMain)
+  modalMain.style.display = "flex"
+  var targettedElm = e.target.innerText;
+  console.log(targettedElm)
+  cont = document.getElementsByClassName("cont")[0];
+  var test = document.createElement("p");
+  cont.appendChild(test);
+  var contTable = document.createElement("div");
+  contTable.className = "cont-table"
+  cont.appendChild(contTable)
+  var contTableHeadings = document.createElement("div");
+  contTableHeadings.className = "cont-table-headings";
+  contTable.appendChild(contTableHeadings)
+  for(i=1;i<10;i++){
+    var tableSpan = document.createElement("span");
+    if(i===1){
+      var textSpanTxt = document.createTextNode("Position");
+    }
+    else if(i===2){
+      var textSpanTxt = document.createTextNode("Team");
+    }
+    else if(i===3){
+      var textSpanTxt = document.createTextNode("Played");
+    }
+    else if(i===4){
+      var textSpanTxt = document.createTextNode("Won");
+    }
+    else if(i===5){
+      var textSpanTxt = document.createTextNode("Lost");
+    }
+    else if(i===6){
+      var textSpanTxt = document.createTextNode("Draw");
+    }
+    else if(i===7){
+      var textSpanTxt = document.createTextNode("Goal_Forward");
+    }
+    else if(i===8){
+      var textSpanTxt = document.createTextNode("Goal_Against");
+    }
+    else{
+      var textSpanTxt = document.createTextNode("Pts");
+
+    }
+    tableSpan.appendChild(textSpanTxt)
+    contTableHeadings.appendChild(tableSpan)
+    tableSpan.className = "table-span"
+  }
+  for(i=1;i<5;i++){
+    var contTableData = document.createElement("div");
+    contTableData.className = "cont-table-data";
+    contTable.appendChild(contTableData)
+    for(j=1;j<10;j++){
+      var contentTableDataSpan = document.createElement("span");
+      contTableData.appendChild(contentTableDataSpan)
+      contentTableDataSpan.className = "table-data-span"
+    }
+  }
+  for(var key of worldCup){
+    // console.log(key)
+    // console.log(key.name)
+    // console.log(key.groups)
+    for(var key1 in key){
+        if(typeof key[key1]=== "object"){
+            // console.log("object")
+            // console.log(key[key1])
+            test.innerText = key[key1]
+              for(var key2 of key[key1]){
+                // console.log(key2)
+                // console.log(key2.standings)
+                if(key2.name === targettedElm){
+                  test.innerText = key2.name;
+                  // break;
+                }
+                for(var key3 of key2.standings){
+                  // console.log("test")
+                  console.log(key3)
+                  console.log(key3.played)
+                  console.log(key3.won)
+                  console.log(key3.lost)
+                  console.log(key3.team)
+                  console.log(key3.team.name)
+                  
+                  // var gameWon = document.createElement("span");
+
+                  // console.log(key3.team)
+                }
+                // break
+              }
+        }
+      }
+    
+    
+  }
+  
+  
+}
+
+
+function handleClose(){
+  var modalMain = document.getElementsByClassName("modal-main")[0];
+  // console.log(modalMain)
+  modalMain.style.display = "none";
+  cont = document.getElementsByClassName("cont")[0];
+  cont.innerHTML = ""
+
 }

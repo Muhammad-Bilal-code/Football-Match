@@ -19,26 +19,27 @@
         justify-content: space-around;
         align-items: center;
       }
-      .group-main {
+      .group-div {
         padding: 20px;
         background-color: turquoise;
         /* max-height: 100px; */
       }
       .modal-main {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: calc(100vw);
-        height: calc(100vh);
-        background-color: rgba(0, 0, 0, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: calc(100vw);
+    height: calc(100vh);
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
       .modal-box {
-        width: 500px;
+        width: 1500px;
         /* height: 400px; */
         background-color: white;
         position: relative;
@@ -55,11 +56,39 @@
       }
       .cont {
         background-color: green;
-        height: 100%;
-        padding-top: 40px;
+        /* height: 100%;
+        padding-top: 40px; */
         /* overflow-y: scroll; */
-        padding-left: 10px;
+        /* padding-left: 10px; */
       }
+      .cont>p {
+    margin: 0;
+    text-align: center;
+    font-size: 50px;
+}
+span.table-span {
+    width: 10%;
+    min-height: 50px;
+    background-color: yellow;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.cont-table-data {
+    min-height: 50px;
+    background-color: wheat;
+    margin: 5px auto;
+}
+span.table-data-span {
+    width: 10%;
+    min-height: 50px;
+    background-color: yellowgreen;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
     </style>
   </head>
   <body>
