@@ -575,21 +575,24 @@ function handleShowModal(e){
     }
   }
   for(var key of worldCup){
-    // console.log(key)
+    console.log(key)
     // console.log(key.name)
     // console.log(key.groups)
     for(var key1 in key){
+      // console.log(key1)
         if(typeof key[key1]=== "object"){
             // console.log("object")
             // console.log(key[key1])
-            test.innerText = key[key1]
+            console.log(key[key1])
+            // test.innerText = key[key1]
               for(var key2 of key[key1]){
                 // console.log(key2)
                 // console.log(key2.standings)
                 if(key2.name === targettedElm){
                   test.innerText = key2.name;
+                  console.log(key2.name)
                   // break;
-                }
+                
                 for(var key3 of key2.standings){
                   // console.log("test")
                   console.log(key3)
@@ -598,11 +601,14 @@ function handleShowModal(e){
                   console.log(key3.lost)
                   console.log(key3.team)
                   console.log(key3.team.name)
-                  
                   // var gameWon = document.createElement("span");
-
                   // console.log(key3.team)
+                  // if
+                  // contentTableDataSpan.innerText = key3.pos
+                  // contentTableDataSpan.innerText = key3.team.name
+
                 }
+              }
                 // break
               }
         }
