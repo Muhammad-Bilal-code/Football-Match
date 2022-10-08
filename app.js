@@ -496,136 +496,120 @@ var worldCup = [
 
 var main = document.getElementById("main");
 for (var key of worldCup) {
-// console.log(key)
-  for(var key1 in key){
-    if(typeof key[key1] === "object"){
+  // console.log(key)
+  for (var key1 in key) {
+    if (typeof key[key1] === "object") {
       // console.log(key[key1])
-      for(var key2 of key[key1]){
+      for (var key2 of key[key1]) {
         // console.log(key2)
         var groupDiv = document.createElement("div");
-        main.appendChild(groupDiv)
-        groupDiv.innerText = key2.name
-        groupDiv.className = "group-div"
-        groupDiv.setAttribute("onclick","handleShowModal(event)")
+        main.appendChild(groupDiv);
+        groupDiv.innerText = key2.name;
+        groupDiv.className = "group-div";
+        groupDiv.setAttribute("onclick", "handleShowModal(event)");
       }
     }
-  }  
+  }
 }
 
-
-
 var cont;
-function handleShowModal(e){
+function handleShowModal(e) {
   var modalMain = document.getElementsByClassName("modal-main")[0];
   // console.log(modalMain)
-  modalMain.style.display = "flex"
+  modalMain.style.display = "flex";
   var targettedElm = e.target.innerText;
-  console.log(targettedElm)
+  // console.log(targettedElm);
   cont = document.getElementsByClassName("cont")[0];
   var test = document.createElement("p");
   cont.appendChild(test);
   var contTable = document.createElement("div");
-  contTable.className = "cont-table"
-  cont.appendChild(contTable)
-  var contTableHeadings = document.createElement("div");
-  contTableHeadings.className = "cont-table-headings";
-  contTable.appendChild(contTableHeadings)
-  for(i=1;i<10;i++){
-    var tableSpan = document.createElement("span");
-    if(i===1){
-      var textSpanTxt = document.createTextNode("Position");
-    }
-    else if(i===2){
-      var textSpanTxt = document.createTextNode("Team");
-    }
-    else if(i===3){
-      var textSpanTxt = document.createTextNode("Played");
-    }
-    else if(i===4){
-      var textSpanTxt = document.createTextNode("Won");
-    }
-    else if(i===5){
-      var textSpanTxt = document.createTextNode("Lost");
-    }
-    else if(i===6){
-      var textSpanTxt = document.createTextNode("Draw");
-    }
-    else if(i===7){
-      var textSpanTxt = document.createTextNode("Goal_Forward");
-    }
-    else if(i===8){
-      var textSpanTxt = document.createTextNode("Goal_Against");
-    }
-    else{
-      var textSpanTxt = document.createTextNode("Pts");
-
-    }
-    tableSpan.appendChild(textSpanTxt)
-    contTableHeadings.appendChild(tableSpan)
-    tableSpan.className = "table-span"
-  }
-  for(i=1;i<5;i++){
-    var contTableData = document.createElement("div");
-    contTableData.className = "cont-table-data";
-    contTable.appendChild(contTableData)
-    for(j=1;j<10;j++){
-      var contentTableDataSpan = document.createElement("span");
-      contTableData.appendChild(contentTableDataSpan)
-      contentTableDataSpan.className = "table-data-span"
+  contTable.className = "cont-table";
+  cont.appendChild(contTable);
+  var table = document.createElement("table");
+  contTable.appendChild(table);
+  // for (var i = 0; i < 6; i++) {
+  //   var tr = docume;
+  // }
+  for (i = 1; i <= 1; i++) {
+    var tr = document.createElement("tr");
+    table.appendChild(tr);
+    for (j = 1; j <= 10; j++) {
+      var th = document.createElement("th");
+      tr.appendChild(th);
+      if (j === 1) {
+        th.innerText = "Team";
+      } else if (j === 2) {
+        th.innerText = "code";
+      } else if (j === 3) {
+        th.innerText = "Position";
+      } else if (j === 4) {
+        th.innerText = "Played";
+      } else if (j === 5) {
+        th.innerText = "Won";
+      } else if (j === 6) {
+        th.innerText = "Draw";
+      } else if (j === 7) {
+        th.innerText = "Lost";
+      } else if (j === 8) {
+        th.innerText = "GF";
+      } else if (j === 9) {
+        th.innerText = "GA";
+      } else if (j === 10) {
+        th.innerText = "Pts";
+      }
     }
   }
-  for(var key of worldCup){
-    console.log(key)
-    // console.log(key.name)
-    // console.log(key.groups)
-    for(var key1 in key){
-      // console.log(key1)
-        if(typeof key[key1]=== "object"){
-            // console.log("object")
-            // console.log(key[key1])
-            console.log(key[key1])
-            // test.innerText = key[key1]
-              for(var key2 of key[key1]){
-                // console.log(key2)
-                // console.log(key2.standings)
-                if(key2.name === targettedElm){
-                  test.innerText = key2.name;
-                  console.log(key2.name)
-                  // break;
-                
-                for(var key3 of key2.standings){
-                  // console.log("test")
-                  console.log(key3)
-                  console.log(key3.played)
-                  console.log(key3.won)
-                  console.log(key3.lost)
-                  console.log(key3.team)
-                  console.log(key3.team.name)
-                  // var gameWon = document.createElement("span");
-                  // console.log(key3.team)
-                  // if
-                  // contentTableDataSpan.innerText = key3.pos
-                  // contentTableDataSpan.innerText = key3.team.name
-
-                }
-              }
-                // break
-              }
+  /******getting group arr*****/
+  console.log(worldCup[0].groups);
+  for (var keyGroup of worldCup[0].groups) {
+    /**********print all group object***********/
+    console.log(keyGroup);
+    /*************targetting selected group****************/
+    if (targettedElm === keyGroup.name) {
+      /*************printing group name in cont box************/
+      console.log(keyGroup.name);
+      test.innerText = keyGroup.name;
+      /**************getting selectedgroup standings array***************/
+      console.log(keyGroup.standings);
+      /***************looping standings array*****************/
+      for (var keyStandingArr of keyGroup.standings) {
+        /***********printing all standings object************/
+        console.log(keyStandingArr);
+        /**************creating rows for standings objects****************/
+        var tr = document.createElement("tr");
+        table.appendChild(tr);
+        /*************printing team names directly**************/
+        // console.log(keyStanding.team.name);
+        /***************creating columns for data according to standing object properties for which looping on standing objects*************/
+        for (var keySatndingObj in keyStandingArr) {
+          /****************printing standings properties***************/
+          // console.log(keyStandingArr[keySatndingObj]);
+          if (typeof keyStandingArr[keySatndingObj] === "object") {
+            // console.log("test");
+            console.log(keyStandingArr[keySatndingObj]);
+            /***************looping team object for getting team properties*****************/
+            for (var keyTeamObj in keyStandingArr[keySatndingObj]) {
+              console.log(keyStandingArr[keySatndingObj][keyTeamObj]);
+              var td1 = document.createElement("td");
+              tr.appendChild(td1);
+              td1.innerText = keyStandingArr[keySatndingObj][keyTeamObj];
+            }
+          } else {
+            var td = document.createElement("td");
+            tr.appendChild(td);
+            /*****************checking type of team object******************/
+            td.innerText = keyStandingArr[keySatndingObj];
+          }
         }
       }
-    
-    
+    }
   }
-  
-  
 }
 
-
-function handleClose(){
+function handleClose() {
   var modalMain = document.getElementsByClassName("modal-main")[0];
   // console.log(modalMain)
   modalMain.style.display = "none";
   cont = document.getElementsByClassName("cont")[0];
-  cont.innerHTML = ""
-
+  cont.innerHTML = "";
 }
